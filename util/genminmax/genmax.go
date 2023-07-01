@@ -1,7 +1,7 @@
 package genminmax
 
 import (
-	"golang.org/x/exp/constraints" // doc at https://pkg.go.dev/golang.org/x/exp/constraints
+	"github.com/dimitrilw/goobar/imports/constraints" // "golang.org/x/exp/constraints"
 )
 
 // note: GenMax will not handle floats. This is by design.
