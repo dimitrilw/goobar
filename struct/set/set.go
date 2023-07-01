@@ -4,8 +4,10 @@ type Void struct{}
 
 type Set[T comparable] struct{ m map[T]Void }
 
-func NewSet[T comparable](items []T) Set[T] {
-	s := Set[T]{make(map[T]Void)}
+func NewSet[T comparable]() Set[T] { return Set[T]{make(map[T]Void)} }
+
+func NewSetFrom[T comparable](items []T) Set[T] {
+	s := NewSet[T]()
 	for _, item := range items {
 		s.Add(item)
 	}
