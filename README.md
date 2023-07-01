@@ -58,6 +58,6 @@ Bottom line: goobar is FUBAR; keep your expectations low.
 A special note regarding the "imports" directory: 
 This directory is code from other projects. Since goobar is intended for copy-paste operations into non-import environments, I occasionally need to make reference to these sources, such as the pre-defined constraints for generics. Therefore, `goobar/imports` is a collection of misc stuff that would usually be imported.
 
-I am trying to be a good steward and respect the source of the code I am copying. I am not trying to pass off the `imports` code as my own. I am trying to give credit where credit is due. I am trying to make it easy to find the source of the code. I am trying to make it easy to find the license of the code.
+I am trying to be a good steward and respect the source of the code place into `imports`. I am not trying to pass off the code as my own. I am trying to give credit where credit is due. I am trying to make it easy to find the source of the code. I am trying to make it easy to find the license of the code.
 
-When referencing this code, I keep re-created code to an absolute minimum. For example, I might do a code challenge and wish to remind myself of all the various Integer types when making a custom generic. So these inclusions are almost more of a reference collection than a source of code to copy-paste.
+When referencing this code, I keep re-created code to an absolute minimum. For example, I might do a code challenge and wish to remind myself of all the various Integer types when making a custom generic. So these inclusions are generally use more like a reference collection than a source of code to copy-paste.

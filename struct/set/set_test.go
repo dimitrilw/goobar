@@ -4,9 +4,21 @@ import (
 	"fmt"
 	"testing"
 
-	// "github.com/dimitrilw/goobar/imports/constraints"
 	"gotest.tools/v3/assert"
 )
+
+func TestNewSet(t *testing.T) {
+	t.Run("int", func(t *testing.T) {
+		s := NewSet[int]()
+		assert.Equal(t, s.Len(), 0)
+		assert.Equal(t, s.Has(1), false)
+		s.Add(1)
+		assert.Equal(t, s.Has(1), true)
+	})
+}
+
+// =============================================================================
+// test different data types
 
 type posStructForSetTest struct{ r, c int }
 
@@ -16,19 +28,22 @@ type testCase[C comparable] struct {
 	add   []C
 }
 
-func setupSubTest[C comparable](t *testing.T, start []C) (Set[C], func(*testing.T)) {
-	t.Log("setup sub test")
-	s := NewSet[C](start)
+func setupRun[C comparable](t *testing.T, start []C) (Set[C], func(*testing.T)) {
+	t.Log("setup before tcRun")
+
+	t.Logf("NewSetFrom %v", start)
+	s := NewSetFrom[C](start)
+
 	return s, func(t *testing.T) {
-		t.Log("teardown sub test")
+		t.Log("teardown after tcRun")
 	}
 }
 
-func tcRunSet[C comparable](t *testing.T, tc testCase[C]) {
+func tcRun[C comparable](t *testing.T, tc testCase[C]) {
 	t.Helper()
 
 	t.Run(fmt.Sprintf("%s Len", tc.desc), func(t *testing.T) {
-		s, teardown := setupSubTest(t, tc.start)
+		s, teardown := setupRun(t, tc.start)
 		defer teardown(t)
 
 		got := s.Len()
@@ -36,7 +51,7 @@ func tcRunSet[C comparable](t *testing.T, tc testCase[C]) {
 	})
 
 	t.Run(fmt.Sprintf("%s Has", tc.desc), func(t *testing.T) {
-		s, teardown := setupSubTest(t, tc.start)
+		s, teardown := setupRun(t, tc.start)
 		defer teardown(t)
 
 		got := s.Has(tc.start[0])
@@ -44,7 +59,7 @@ func tcRunSet[C comparable](t *testing.T, tc testCase[C]) {
 	})
 
 	t.Run(fmt.Sprintf("%s Add", tc.desc), func(t *testing.T) {
-		s, teardown := setupSubTest(t, tc.start)
+		s, teardown := setupRun(t, tc.start)
 		defer teardown(t)
 
 		for _, a := range tc.add {
@@ -55,7 +70,7 @@ func tcRunSet[C comparable](t *testing.T, tc testCase[C]) {
 	})
 
 	t.Run(fmt.Sprintf("%s Del", tc.desc), func(t *testing.T) {
-		s, teardown := setupSubTest(t, tc.start)
+		s, teardown := setupRun(t, tc.start)
 		defer teardown(t)
 
 		s.Del(tc.start[0])
@@ -64,7 +79,7 @@ func tcRunSet[C comparable](t *testing.T, tc testCase[C]) {
 	})
 
 	t.Run(fmt.Sprintf("%s Slice", tc.desc), func(t *testing.T) {
-		s, teardown := setupSubTest(t, tc.start)
+		s, teardown := setupRun(t, tc.start)
 		defer teardown(t)
 
 		got := s.Slice()
@@ -74,26 +89,26 @@ func tcRunSet[C comparable](t *testing.T, tc testCase[C]) {
 	})
 }
 
-func TestSet_TestCases(t *testing.T) {
-	tcRunSet(t, testCase[int]{
+func TestNewSetFrom_TestCases(t *testing.T) {
+	tcRun(t, testCase[int]{
 		desc:  "int",
 		start: []int{1, 2, 3},
 		add:   []int{4, 5, 6},
 	})
 
-	tcRunSet(t, testCase[string]{
+	tcRun(t, testCase[string]{
 		desc:  "string",
 		start: []string{"a", "b", "c"},
 		add:   []string{"d", "e", "f"},
 	})
 
-	tcRunSet(t, testCase[rune]{
+	tcRun(t, testCase[rune]{
 		desc:  "rune",
 		start: []rune{'a', 'b', 'c'},
 		add:   []rune{'d', 'e', 'f'},
 	})
 
-	tcRunSet(t, testCase[posStructForSetTest]{
+	tcRun(t, testCase[posStructForSetTest]{
 		desc:  "posStruct",
 		start: []posStructForSetTest{{1, 1}, {2, 2}, {3, 3}},
 		add:   []posStructForSetTest{{4, 4}, {5, 5}, {6, 6}},
@@ -105,7 +120,7 @@ func TestSet_TestCases(t *testing.T) {
 
 func ExampleSet() {
 	nums := []int{1}
-	fmt.Println(NewSet(nums))
+	fmt.Println(NewSetFrom(nums))
 	// Output: {map[1:{}]}
 }
 
@@ -114,7 +129,7 @@ func ExampleSet() {
 
 func BenchmarkSet(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		s := NewSet([]int{1, 2, 3})
+		s := NewSetFrom([]int{1, 2, 3})
 		s.Len()
 		s.Add(i)
 		s.Has(i)
