@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"golang.org/x/exp/constraints" // doc at https://pkg.go.dev/golang.org/x/exp/constraints
+	"golang.org/x/exp/constraints" // "github.com/dimitrilw/goobar/imports/constraints"
 	"gotest.tools/v3/assert"
 )
 

@@ -31,5 +31,7 @@
             "blackbox",
         // misc other
             "fubar",
+            "opensource",
+            "predeclared",
     ],
 }
