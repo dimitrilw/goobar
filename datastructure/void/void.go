@@ -1,3 +1,3 @@
-package goobar
+package void
 
 type Void struct{}

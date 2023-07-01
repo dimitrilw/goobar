@@ -1,4 +1,4 @@
-package goobar
+package minmax
 
 import (
 	"math"
@@ -7,6 +7,9 @@ import (
 const (
 	MAX = math.MaxInt
 )
+
+// note: do not use custom Min function with floats; use math.Max instead
+// because there are many special cases with floats
 
 func Min(N ...int) (r int) {
 	r = MAX

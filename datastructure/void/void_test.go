@@ -1,4 +1,4 @@
-package goobar
+package void
 
 import (
 	"fmt"

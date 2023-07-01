@@ -1,4 +1,4 @@
-package goobar
+package minmax
 
 import (
 	"fmt"

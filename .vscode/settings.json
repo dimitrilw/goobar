@@ -11,6 +11,8 @@
         // repo-related words
             "goobar", // this repo
             "intset",
+            "genminmax",
+            "minmax",
         // common code short-hand
             "nums",
         // go terms
