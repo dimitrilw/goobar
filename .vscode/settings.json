@@ -1,0 +1,31 @@
+{
+    // cSpell info: https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker
+    "cSpell.ignorePaths": [
+        // repo files
+        ".git",
+    ],
+    "cSpell.words": [
+        // people
+            "Dimitri",
+            "dimitrilw",
+        // repo-related words
+            "goobar", // this repo
+            "intset",
+        // go terms
+            "allocs",
+            "benchmem",
+            "errcheck",
+            "gopls",
+            "pprof",
+            "staticcheck",
+            "struct",
+        // go packages
+            "dedent",
+            "fyne",
+            "gotest",
+        // general tech terms
+            "blackbox",
+        // misc other
+            "fubar",
+    ],
+}

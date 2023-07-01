@@ -2,7 +2,7 @@
 
 Collection of Go code-blocks.
 
-While this repo appears to be FUBAR and very messy, it is worth recognizing that goobar's primary use is for copy-paste into code challenges. So while goobar *is* FUBAR, it is for good reason.
+While this repo appears to be FUBAR and very messy, it is worth recognizing that goobar's primary use is for copy-paste into code challenges. So while goobar *is* FUBAR, it is for a cause.
 
 This intent is why the repository is more focused on the blocks as stand-alone. For example, you will find code like this:
 
@@ -15,7 +15,7 @@ func NewSomething() *Something { return &Something{} }
 That code works well for copy-paste. If it was imported, it would be clunky:
 
 ```go
-import "goobar/something"
+import ".../goobar/something"
 
 mySomething := something.NewSomething()
 ```
@@ -31,7 +31,7 @@ func New() *Something { return &Something{} }
 That code would result in imported use more like this:
 
 ```go
-import "goobar/something"
+import ".../goobar/something"
 
 mySomething := something.New()
 ```
