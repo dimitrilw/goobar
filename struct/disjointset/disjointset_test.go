@@ -62,11 +62,19 @@ func TestDisjointSet(t *testing.T) {
 		assert.Equal(t, d.Len(), 4)
 		assert.Equal(t, d.Find(0), d.Find(1))
 	})
+	t.Run("Find Invalid", func(t *testing.T) {
+		d := NewDisjointSet(5)
+		assert.Equal(t, d.Find(9), -1)
+	})
 	t.Run("Size", func(t *testing.T) {
 		d := NewDisjointSet(5)
 		d.Union(0, 1)
 		assert.Equal(t, d.Len(), 4)
 		assert.Equal(t, d.Size(0), 2)
+	})
+	t.Run("Size Invalid", func(t *testing.T) {
+		d := NewDisjointSet(5)
+		assert.Equal(t, d.Size(9), 0)
 	})
 }
 

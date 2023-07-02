@@ -8,6 +8,19 @@ import (
 	"gotest.tools/v3/assert"
 )
 
+// =============================================================================
+// no args singleton test
+
+func TestMaxGenNoArgs(t *testing.T) {
+	t.Run("no args", func(t *testing.T) {
+		got := MaxGen[int]() // cSpell:disable-line
+		assert.Equal(t, got, 0)
+	})
+}
+
+// =============================================================================
+// generic test cases
+
 func tcRunMaxGen[C constraints.Integer](t *testing.T, tc testCase[C]) {
 	t.Helper()
 	t.Run(tc.desc, func(t *testing.T) {
