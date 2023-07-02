@@ -4,7 +4,7 @@ package sumofarithmeticsubsequence
 
 // given (1, 5) as args, function returns 1+2+3+4+5 = 15
 // given (3, 5) as args, function returns 3+4+5 = 12
-func SumOfArithmeticSubSequence(a, b int) int {
+func SumOfArithmeticSubsequence(a, b int) int {
 	if a > b {
 		a, b = b, a
 	}
