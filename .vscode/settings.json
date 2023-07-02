@@ -13,6 +13,7 @@
             "disjointset",
             "genheap",
             "genminmax",
+            "gensum",
             "minmax",
             "primefactors",
         // common code short-hand
