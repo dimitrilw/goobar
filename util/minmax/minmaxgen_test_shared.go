@@ -1,4 +1,4 @@
-package genminmax
+package minmax
 
 import (
 	"golang.org/x/exp/constraints" // "github.com/dimitrilw/goobar/imports/constraints"

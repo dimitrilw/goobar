@@ -11,12 +11,11 @@
         // repo-related words
             "goobar", // this repo
             "disjointset",
-            "genheap",
-            "genminmax",
-            "gensum",
-            "longestcommonsubsequencegen",
+            "heaptype",
+            "longestcommonsubsequence",
             "longestincreasingsubsequence",
             "minmax",
+            "minmaxgen",
             "primefactors",
         // common code short-hand
             "bools",

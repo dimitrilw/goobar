@@ -1,4 +1,4 @@
-package genheap
+package heaptype
 
 import (
 	"container/heap"
