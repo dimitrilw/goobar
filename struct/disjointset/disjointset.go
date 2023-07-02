@@ -17,6 +17,7 @@ Example use:
 
 While Len and Size are not typically used, they are provided for convenience. I encounter the requirement
 to calculate these values often enough that I decided to include them. The overhead is small.
+Also, if I want a really lean implementation, it is trivial to prune these features out.
 */
 
 // DisjointSet represents a Disjoint Set (aka Union Find).
