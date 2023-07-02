@@ -133,15 +133,13 @@ func (d *DisjointSet) Union(fromID, destID int) bool {
 		d.ranks[destID]++
 	}
 
-	if d.ranks[destID] > d.ranks[fromID] {
-		d.parents[fromID] = destID
-		d.sizes[destID] += d.sizes[fromID]
-	} else {
-		// Small ID is the higher-ranked ID.
-		// User had small/large flipped; merge anyway.
-		d.parents[destID] = fromID
-		d.sizes[fromID] += d.sizes[destID]
+	if d.ranks[destID] < d.ranks[fromID] {
+		// fromID is the higher-ranked ID.
+		// User had from/dest flipped, and we'll merge anyway.
+		fromID, destID = destID, fromID
 	}
+	d.parents[fromID] = destID
+	d.sizes[destID] += d.sizes[fromID]
 	d.numSets--
 	return true
 }
