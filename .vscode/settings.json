@@ -14,10 +14,12 @@
             "genheap",
             "genminmax",
             "gensum",
+            "longestcommonsubsequencegen",
             "longestincreasingsubsequence",
             "minmax",
             "primefactors",
         // common code short-hand
+            "bools",
             "nums",
         // go terms
             "allocs",
