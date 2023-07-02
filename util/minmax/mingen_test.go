@@ -16,7 +16,7 @@ func tcRunMinGen[C constraints.Integer](t *testing.T, tc testCase[C]) {
 	})
 }
 
-func TestMinGen_TestCases(t *testing.T) {
+func TestMinGen(t *testing.T) {
 	tcRunMinGen(t, testCase[int]{
 		desc: "type int",
 		give: []int{1, 2, 3},

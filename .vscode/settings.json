@@ -15,7 +15,6 @@
             "longestcommonsubsequence",
             "longestincreasingsubsequence",
             "minmax",
-            "minmaxgen",
             "primefactors",
         // common code short-hand
             "bools",

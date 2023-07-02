@@ -89,7 +89,7 @@ func tcRun[C comparable](t *testing.T, tc testCase[C]) {
 	})
 }
 
-func TestNewSetFrom_TestCases(t *testing.T) {
+func TestNewSetFrom(t *testing.T) {
 	tcRun(t, testCase[int]{
 		desc:  "int",
 		start: []int{1, 2, 3},
