@@ -29,6 +29,12 @@ func TestSumOfArithmeticSubsequence(t *testing.T) {
 		want = 12
 		assert.Equal(t, got, want)
 	})
+
+	t.Run("flipped args", func(t *testing.T) {
+		got := SumOfArithmeticSubsequence(5, 1)
+		want := 15
+		assert.Equal(t, got, want)
+	})
 }
 
 // =============================================================================

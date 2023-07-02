@@ -16,9 +16,10 @@
             "longestincreasingsubsequence",
             "minmax",
             "primefactors",
-        // common code short-hand
+        // common code/tech terms & short-hand
             "bools",
             "nums",
+            "rgba",
         // go terms
             "allocs",
             "benchmem",
@@ -36,4 +37,15 @@
             "opensource",
             "predeclared",
     ],
+    // go plugin
+    "go.testOnSave": true,
+    "go.coverOnSave": true,
+    "go.coverageDecorator": {
+        "type": "gutter",
+        "coveredHighlightColor": "rgba(64,128,128,0.5)",
+        "uncoveredHighlightColor": "rgba(128,64,64,0.25)",
+        "coveredGutterStyle": "blockgreen", // cSpell:disable-line
+        "uncoveredGutterStyle": "blockred", // cSpell:disable-line
+    },
+    "go.coverOnSingleTest": true,
 }
