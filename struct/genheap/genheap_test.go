@@ -25,9 +25,7 @@ func TestNewHeap(t *testing.T) {
 		gotSlice := h.Slice()
 		sort.Ints(gotSlice)
 		want := []int{2, 3}
-		for i := range gotSlice {
-			assert.Equal(t, gotSlice[i], want[i])
-		}
+		assert.DeepEqual(t, gotSlice, want)
 	})
 }
 
@@ -113,9 +111,7 @@ func tcRun[C constraints.Ordered](t *testing.T, tc testCase[C]) {
 		sort.Slice(gotSlice, func(i, j int) bool { return gotSlice[i] < gotSlice[j] })
 		want := tc.start
 		sort.Slice(want, func(i, j int) bool { return gotSlice[i] < gotSlice[j] })
-		for i := range gotSlice {
-			assert.Equal(t, gotSlice[i], want[i])
-		}
+		assert.DeepEqual(t, gotSlice, want)
 	})
 }
 

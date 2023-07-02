@@ -13,6 +13,7 @@
             "genheap",
             "genminmax",
             "minmax",
+            "primefactors",
         // common code short-hand
             "nums",
         // go terms
@@ -27,8 +28,6 @@
             "dedent",
             "fyne",
             "gotest",
-        // general tech terms
-            "blackbox",
         // misc other
             "fubar",
             "opensource",
