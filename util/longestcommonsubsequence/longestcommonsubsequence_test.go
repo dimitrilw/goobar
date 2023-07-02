@@ -1,4 +1,4 @@
-package longestcommonsubsequencegen
+package longestcommonsubsequence
 
 import (
 	"fmt"
@@ -32,12 +32,12 @@ func TestLCSString(t *testing.T) {
 func tcRunLCSGen[C comparable](t *testing.T, tc testCase[C]) {
 	t.Helper()
 	t.Run(fmt.Sprintf("%s run clean", tc.desc), func(t *testing.T) {
-		got := LongestCommonSubsequenceGen(tc.giveLg, tc.giveSm)
+		got := LongestCommonSubsequence(tc.giveLg, tc.giveSm)
 		assert.Equal(t, got, tc.want)
 	})
 
 	t.Run(fmt.Sprintf("%s run flipped", tc.desc), func(t *testing.T) {
-		got := LongestCommonSubsequenceGen(tc.giveSm, tc.giveLg)
+		got := LongestCommonSubsequence(tc.giveSm, tc.giveLg)
 		assert.Equal(t, got, tc.want)
 	})
 }
@@ -76,10 +76,10 @@ func TestLCSGen_TestCases(t *testing.T) {
 // =============================================================================
 // Examples
 
-func ExampleLongestCommonSubsequenceGen() {
+func ExampleLongestCommonSubsequence() {
 	lg := []int{1, 2, 3, 4, 5}
 	sm := []int{1, 3, 5}
-	fmt.Println(LongestCommonSubsequenceGen(lg, sm))
+	fmt.Println(LongestCommonSubsequence(lg, sm))
 	// Output: 3
 }
 
@@ -100,6 +100,6 @@ func BenchmarkLongestCommonSubsequence(b *testing.B) {
 		if i%2 == 0 {
 			sm = append(sm, i)
 		}
-		LongestCommonSubsequenceGen(lg, sm)
+		LongestCommonSubsequence(lg, sm)
 	}
 }

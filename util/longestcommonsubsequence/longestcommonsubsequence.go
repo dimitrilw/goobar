@@ -1,4 +1,4 @@
-package longestcommonsubsequencegen
+package longestcommonsubsequence
 
 import (
 	"github.com/dimitrilw/goobar/util/minmax"
@@ -11,7 +11,7 @@ var Max = minmax.Max // GOOBAR: add Max function
 //
 // Function uses dp tabulation and is space optimized by working in 1d array
 // with vars for other cells-of-interest (from normal 2d dp) & also for readability.
-func LongestCommonSubsequenceGen[T comparable](lgSlice, smSlice []T) int {
+func LongestCommonSubsequence[T comparable](lgSlice, smSlice []T) int {
 	if len(lgSlice) < len(smSlice) {
 		lgSlice, smSlice = smSlice, lgSlice
 	}
@@ -42,5 +42,5 @@ func LongestCommonSubsequenceGen[T comparable](lgSlice, smSlice []T) int {
 
 // helper function to handle strings
 func LongestCommonSubsequenceString(lgStr, smStr string) int {
-	return LongestCommonSubsequenceGen([]byte(lgStr), []byte(smStr))
+	return LongestCommonSubsequence([]byte(lgStr), []byte(smStr))
 }
