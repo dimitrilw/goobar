@@ -14,6 +14,7 @@
             "genheap",
             "genminmax",
             "gensum",
+            "longestincreasingsubsequence",
             "minmax",
             "primefactors",
         // common code short-hand
