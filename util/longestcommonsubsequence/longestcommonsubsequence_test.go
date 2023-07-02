@@ -29,7 +29,7 @@ func TestLCSString(t *testing.T) {
 	})
 }
 
-func tcRunLCSGen[C comparable](t *testing.T, tc testCase[C]) {
+func tcRun[C comparable](t *testing.T, tc testCase[C]) {
 	t.Helper()
 	t.Run(fmt.Sprintf("%s run clean", tc.desc), func(t *testing.T) {
 		got := LongestCommonSubsequence(tc.giveLg, tc.giveSm)
@@ -42,22 +42,22 @@ func tcRunLCSGen[C comparable](t *testing.T, tc testCase[C]) {
 	})
 }
 
-func TestLCSGen_TestCases(t *testing.T) {
-	tcRunLCSGen(t, testCase[int]{
+func TestLCS(t *testing.T) {
+	tcRun(t, testCase[int]{
 		desc:   "type int",
 		giveLg: []int{1, 2, 3, 4, 5},
 		giveSm: []int{1, 3, 5},
 		want:   3,
 	})
 
-	tcRunLCSGen(t, testCase[int64]{
+	tcRun(t, testCase[int64]{
 		desc:   "type int64",
 		giveLg: []int64{1, 2, 3, 4, 5},
 		giveSm: []int64{1, 3, 5},
 		want:   3,
 	})
 
-	tcRunLCSGen(t, testCase[testLCS_Pos]{
+	tcRun(t, testCase[testLCS_Pos]{
 		desc:   "type Pos struct",
 		giveLg: []testLCS_Pos{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
 		giveSm: []testLCS_Pos{{1, 1}, {3, 3}, {5, 5}},
@@ -65,7 +65,7 @@ func TestLCSGen_TestCases(t *testing.T) {
 	})
 
 	// nobody would run this on bools, but I'm also playing with test cases here
-	tcRunLCSGen(t, testCase[bool]{
+	tcRun(t, testCase[bool]{
 		desc:   "type bool",
 		giveLg: []bool{true, false, true, false, true},
 		giveSm: []bool{true, true, true},

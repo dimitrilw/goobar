@@ -115,7 +115,7 @@ func tcRun[C constraints.Ordered](t *testing.T, tc testCase[C]) {
 	})
 }
 
-func TestNewHeapFrom_TestCases(t *testing.T) {
+func TestNewHeapFrom(t *testing.T) {
 	tcRun(t, testCase[int]{
 		desc:  "int",
 		start: []int{5, 4, 6},

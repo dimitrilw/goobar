@@ -16,7 +16,7 @@ func tcRunMaxGen[C constraints.Integer](t *testing.T, tc testCase[C]) {
 	})
 }
 
-func TestMaxGen_TestCases(t *testing.T) {
+func TestMaxGen(t *testing.T) {
 	tcRunMaxGen(t, testCase[int]{
 		desc: "type int",
 		give: []int{1, 2, 3},

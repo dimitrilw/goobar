@@ -4,29 +4,59 @@ import (
 	"fmt"
 	"testing"
 
+	"golang.org/x/exp/constraints" // "github.com/dimitrilw/goobar/imports/constraints"
 	"gotest.tools/v3/assert"
 )
 
-func TestLongestIncreasingSubsequence(t *testing.T) {
-	t.Run("3 4 7 4", func(t *testing.T) {
-		seq := []int{3, 4, 7, 4}
-		got := LongestIncreasingSubsequence(seq)
-		assert.DeepEqual(t, got, 3)
+type testCase[C constraints.Ordered] struct {
+	desc string
+	give [3]C
+}
+
+func TestLISString(t *testing.T) {
+	t.Run("string", func(t *testing.T) {
+		got := LongestIncreasingSubsequenceString("azbycxdwe") // cSpell:disable-line
+		assert.Equal(t, got, 5)
 	})
-	t.Run("3 1 2", func(t *testing.T) {
-		seq := []int{3, 1, 2}
-		got := LongestIncreasingSubsequence(seq)
-		assert.DeepEqual(t, got, 2)
+}
+
+func tcRun[C constraints.Ordered](t *testing.T, tc testCase[C]) {
+	t.Helper()
+	t.Run(fmt.Sprintf("%s 0 1 2 1", tc.desc), func(t *testing.T) {
+		tArr := []C{tc.give[0], tc.give[1], tc.give[2], tc.give[1]}
+		got := LongestIncreasingSubsequence(tArr)
+		assert.Equal(t, got, 3)
 	})
-	t.Run("1 1 1 1", func(t *testing.T) {
-		seq := []int{1, 1, 1, 1}
-		got := LongestIncreasingSubsequence(seq)
-		assert.DeepEqual(t, got, 1)
+
+	t.Run(fmt.Sprintf("%s 2 0 1", tc.desc), func(t *testing.T) {
+		tArr := []C{tc.give[2], tc.give[0], tc.give[1]}
+		got := LongestIncreasingSubsequence(tArr)
+		assert.Equal(t, got, 2)
 	})
-	t.Run("3 2 1", func(t *testing.T) {
-		seq := []int{3, 2, 1}
-		got := LongestIncreasingSubsequence(seq)
-		assert.DeepEqual(t, got, 1)
+
+	t.Run(fmt.Sprintf("%s 1 1 1 1 1", tc.desc), func(t *testing.T) {
+		tArr := []C{tc.give[1], tc.give[1], tc.give[1], tc.give[1], tc.give[1]}
+		got := LongestIncreasingSubsequence(tArr)
+		assert.Equal(t, got, 1)
+	})
+
+	t.Run(fmt.Sprintf("%s 2 1 0", tc.desc), func(t *testing.T) {
+		tArr := []C{tc.give[2], tc.give[1], tc.give[0]}
+		got := LongestIncreasingSubsequence(tArr)
+		assert.Equal(t, got, 1)
+	})
+}
+
+// pipes test cases for various generic types into tcRun"FuncName"
+func TestLIS(t *testing.T) {
+	tcRun(t, testCase[int]{
+		desc: "type int",
+		give: [3]int{1, 2, 3},
+	})
+
+	tcRun(t, testCase[int64]{
+		desc: "type int64",
+		give: [3]int64{1, 2, 3},
 	})
 }
 
@@ -34,17 +64,24 @@ func TestLongestIncreasingSubsequence(t *testing.T) {
 // Examples
 
 func ExampleLongestIncreasingSubsequence() {
-	seq := []int{3, 4, 7, 4}
+	seq := []int{1, 2, 3, 2}
 	fmt.Println(LongestIncreasingSubsequence(seq))
 	// Output: 3
+}
+
+func ExampleLongestIncreasingSubsequenceString() {
+	fmt.Println(LongestIncreasingSubsequenceString("azbycxdwe")) // cSpell:disable-line
+
+	// Output: 5
 }
 
 // =============================================================================
 // Benchmarks
 
 func BenchmarkLongestIncreasingSubsequence(b *testing.B) {
+	var seq []int
 	for i := 0; i < b.N; i++ {
-		seq := []int{3, 4, 7, 4}
+		seq = append(seq, i)
 		LongestIncreasingSubsequence(seq)
 	}
 }

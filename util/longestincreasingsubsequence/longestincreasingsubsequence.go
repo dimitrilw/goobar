@@ -2,6 +2,8 @@ package longestincreasingsubsequence
 
 import (
 	"sort"
+
+	"golang.org/x/exp/constraints" // "github.com/dimitrilw/goobar/imports/constraints"
 )
 
 /*
@@ -35,15 +37,20 @@ are increasing, you can sort the data by x and reverse-sort y, then find the LIS
 
 		res := LongestIncreasingSubsequence(seq)
 */
-func LongestIncreasingSubsequence(nums []int) int {
-	dp := []int{}
-	for _, n := range nums {
-		idx := sort.SearchInts(dp, n)
+func LongestIncreasingSubsequence[T constraints.Ordered](seq []T) int {
+	dp := []T{}
+	for _, item := range seq {
+		idx := sort.Search(len(dp), func(i int) bool { return dp[i] >= item })
 		if idx == len(dp) {
-			dp = append(dp, n)
+			dp = append(dp, item)
 		} else {
-			dp[idx] = n
+			dp[idx] = item
 		}
 	}
 	return len(dp)
+}
+
+// helper function to handle strings
+func LongestIncreasingSubsequenceString(s string) int {
+	return LongestIncreasingSubsequence([]byte(s))
 }
