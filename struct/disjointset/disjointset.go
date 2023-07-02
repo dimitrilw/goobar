@@ -93,28 +93,54 @@ func (d *DisjointSet) Size(id int) int {
 	return d.sizes[d.Find(id)]
 }
 
-// Union performs the union of two sets containing given elements
-// and returns true/false on whether or not a union action was completed.
-func (d *DisjointSet) Union(smID, lgID int) bool {
-	smID = d.Find(smID)
-	lgID = d.Find(lgID)
-	// small ID is already in large ID ...or vice-versa
-	if smID == lgID {
+/*
+Union performs the union of two sets containing given elements
+and returns true/false on whether or not a union action was completed.
+If the two elements are already in the same set, then no union is performed.
+
+The from/dest order is a matter of personal preference. I find that it makes
+code line-up better when I use it like this:
+
+	for pos := range listOfNewPositionsOfInterest {
+		posID := d.Add()
+		if pos.row == 0 {
+			d.Union(posID, topGroupID)
+		}
+		if pos.row == numRows - 1 {
+			d.Union(posID, bottomGroupID)
+		}
+		if pos.col == 0 {
+			d.Union(posID, leftGroupID)
+		}
+		if pos.col == numCols - 1 {
+			d.Union(posID, rightGroupID)
+		}
+	}
+
+Granted, this assumes I ensure the first merge into the "dest" groups (top, bottom, left, right)
+was done with that group's ID as the "dest" ID so that it has the highest rank. After that,
+order doesn't matter as much. I just find it easier to read when I do it this way.
+*/
+func (d *DisjointSet) Union(fromID, destID int) bool {
+	fromID = d.Find(fromID)
+	destID = d.Find(destID)
+	// from ID is already in destination ID ...or vice-versa
+	if fromID == destID {
 		return false
 	}
 
-	if d.ranks[smID] == d.ranks[lgID] {
-		d.ranks[lgID]++
+	if d.ranks[fromID] == d.ranks[destID] {
+		d.ranks[destID]++
 	}
 
-	if d.ranks[lgID] > d.ranks[smID] {
-		d.parents[smID] = lgID
-		d.sizes[lgID] += d.sizes[smID]
+	if d.ranks[destID] > d.ranks[fromID] {
+		d.parents[fromID] = destID
+		d.sizes[destID] += d.sizes[fromID]
 	} else {
 		// Small ID is the higher-ranked ID.
 		// User had small/large flipped; merge anyway.
-		d.parents[lgID] = smID
-		d.sizes[smID] += d.sizes[lgID]
+		d.parents[destID] = fromID
+		d.sizes[fromID] += d.sizes[destID]
 	}
 	d.numSets--
 	return true
