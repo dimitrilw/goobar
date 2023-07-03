@@ -1,5 +1,6 @@
 {
-    // cSpell info: https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker
+    // cSpell info:
+    // https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker
     "cSpell.ignorePaths": [
         // repo files
         ".git",
@@ -20,10 +21,12 @@
             "bools",
             "nums",
             "rgba",
+            "Taskfile",
         // go terms
             "allocs",
             "benchmem",
             "errcheck",
+            "golangci",
             "gopls",
             "pprof",
             "staticcheck",

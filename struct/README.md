@@ -1,3 +1,3 @@
 # struct
 
-`goobar/struct` is a collection of more complex struct objects -- usually data structures.
+`goobar/struct` is a collection of more complex struct objects -- mostly data structures.
