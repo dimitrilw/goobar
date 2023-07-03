@@ -8,6 +8,8 @@ end_of_line = lf
 indent_size = 4
 indent_style = space
 insert_final_newline = true
+# aim for 80, but allow 100; compatibility with working
+# via tablets and other devices with small screens
 max_line_length = 100
 trim_trailing_whitespace = true
 
@@ -16,7 +18,7 @@ indent_style = tab
 indent_size = tab
 tab_size = 4
 
-[*.js]
+[*.{js,json,toml,yml}]
 indent_size = 2
 
 [*.md]

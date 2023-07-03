@@ -93,7 +93,7 @@ func TestGenSum(t *testing.T) {
 	tcRun(t, testCase[string]{
 		desc: "type string",
 		give: []string{"one", "two", "three"},
-		want: string("onetwothree"),
+		want: string("onetwothree"), // cSpell:disable-line
 	})
 }
 
