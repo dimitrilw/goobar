@@ -45,4 +45,4 @@ jobs:
       - name: Fetch Repository
         uses: actions/checkout@v2
       - name: Run Benchmark
-        run: go test -run=^$ -benchmem -benchtime=1s -bench=.
+        run: go test -run=^$ -benchmem -benchtime=1s -bench=./...
