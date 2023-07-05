@@ -97,7 +97,7 @@ func BenchmarkLongestCommonSubsequence(b *testing.B) {
 	var lg, sm []int
 	for i := 0; i < b.N; i++ {
 		lg = append(lg, i)
-		if i%2 == 0 {
+		if i%1000 == 0 {
 			sm = append(sm, i)
 		}
 		LongestCommonSubsequence(lg, sm)
