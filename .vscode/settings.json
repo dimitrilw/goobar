@@ -13,6 +13,7 @@
             "goobar", // this repo
             "alphatrie",
             "disjointset",
+            "gridpos",
             "heaptype",
             "longestcommonsubsequence",
             "longestincreasingsubsequence",
