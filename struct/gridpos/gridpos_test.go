@@ -143,7 +143,7 @@ func BenchmarkGridPosFromSlice(b *testing.B) {
 			p = NewPosFrom(sp)
 			q = append(q, p)
 		}
-		// BFS everything, to help with timing
+		// BFS everything, to give the benchmark something to do
 		for len(q) > 0 {
 			p, q = q[0], q[1:]
 			if visited[p] {
@@ -166,7 +166,7 @@ func BenchmarkGridPosFromArray(b *testing.B) {
 			p = NewPosFrom(sp)
 			q = append(q, p)
 		}
-		// BFS everything, to help with timing
+		// BFS everything, to give the benchmark something to do
 		for len(q) > 0 {
 			p, q = q[0], q[1:]
 			if visited[p] {
