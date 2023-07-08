@@ -15,7 +15,7 @@ Example use:
 
 ...and more.
 
-While Len and Size are not typically used, they are provided for convenience.
+While Len, Size, and SetIDs are not typically used, they are provided for convenience.
 I encounter the requirement to calculate these values often enough that I decided
 to include them. The overhead is small.  Also, if I want a really lean implementation,
 it is trivial to prune these features out.
@@ -24,12 +24,13 @@ it is trivial to prune these features out.
 // DisjointSet represents a Disjoint Set (aka Union Find).
 // Zero value of DisjointSet is one with 0 elements.
 type DisjointSet struct {
-	parents, ranks, sizes []int
-
+	parents []int
+	ranks   []int
+	sizes   []int
 	numSets int
 }
 
-// New returns an initialized disjoint set of given size.
+// NewDisjointSet returns an initialized disjoint set of given size.
 func NewDisjointSet(size int) *DisjointSet {
 	d := &DisjointSet{
 		parents: make([]int, size),
