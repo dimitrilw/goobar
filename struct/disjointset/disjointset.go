@@ -54,14 +54,14 @@ func (d *DisjointSet) Add() (id int) {
 	return
 }
 
+// Len returns number of sets in DisjointSet.
+func (d *DisjointSet) Len() int { return d.numSets }
+
 // IsValid checks if the given ID is a valid int
 // for DisjointSet's current state.
 func (d *DisjointSet) IsValid(id int) bool {
 	return id >= 0 && id < len(d.parents)
 }
-
-// Len returns number of sets in DisjointSet.
-func (d *DisjointSet) Len() int { return d.numSets }
 
 // SetIDs returns a list of set IDs where each ID is the parent node.
 func (d *DisjointSet) SetIDs() []int {
