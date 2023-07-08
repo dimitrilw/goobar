@@ -19,6 +19,7 @@
             "longestincreasingsubsequence",
             "minmax",
             "primefactors",
+            "simpleheap",
         // common code/tech terms & short-hand
             "bools",
             "nums",
