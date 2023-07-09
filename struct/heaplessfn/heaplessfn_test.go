@@ -1,4 +1,6 @@
-package simpleheap
+package heaplessfn
+
+// func maxHeapLessFn(a, b int) bool { return a > b }
 
 import (
 	"container/heap"
@@ -13,18 +15,41 @@ var (
 	START_INTS = [3]int{5, 4, 6}
 )
 
+func minHeapLessFn(a, b int) bool { return a < b }
+func maxHeapLessFn(a, b int) bool { return a > b }
+
 func setupRun(t *testing.T) (*Heap, func(*testing.T)) {
 	t.Log("setup, building Heap with START_INTS")
 
-	h := &Heap{}
+	h := NewHeapFrom(START_INTS[:], minHeapLessFn)
 	heap.Init(h)
-	for _, n := range START_INTS {
-		heap.Push(h, n)
-	}
+	// for _, n := range START_INTS {
+	// 	heap.Push(h, n)
+	// }
 
 	return h, func(t *testing.T) {
 		t.Log("teardown after test")
 	}
+}
+
+func TestNewHeap(t *testing.T) {
+	t.Run("NewHeap", func(t *testing.T) {
+		h := NewHeap(maxHeapLessFn)
+		heap.Init(h)
+		heap.Push(h, 1)
+		heap.Push(h, 3)
+		heap.Push(h, 2)
+		got := h.Len()
+		assert.Equal(t, got, 3)
+		assert.Equal(t, h.Peek(), 3)
+	})
+	t.Run("NewHeapFrom", func(t *testing.T) {
+		h := NewHeapFrom(START_INTS[:], maxHeapLessFn)
+		heap.Init(h)
+		got := h.Len()
+		assert.Equal(t, got, 3)
+		assert.Equal(t, h.Peek(), 6)
+	})
 }
 
 func TestHeap(t *testing.T) {
@@ -75,6 +100,21 @@ func TestHeap(t *testing.T) {
 		got = heap.Pop(h)
 		assert.Equal(t, got, want[2])
 	})
+	t.Run("Slice", func(t *testing.T) {
+		h, teardown := setupRun(t)
+		defer teardown(t)
+
+		want := make([]int, len(START_INTS))
+		copy(want, START_INTS[:])
+		sort.Slice(want, func(i, j int) bool { return want[i] < want[j] })
+
+		got := h.Slice()
+		sort.Slice(got, func(i, j int) bool { return got[i] < got[j] })
+
+		for i := range want {
+			assert.Equal(t, got[i], want[i])
+		}
+	})
 }
 
 // =============================================================================
@@ -82,7 +122,7 @@ func TestHeap(t *testing.T) {
 
 func ExampleHeap() {
 	nums := []int{2, 1, 3}
-	h := &Heap{}
+	h := NewHeap(minHeapLessFn)
 	heap.Init(h)
 	for _, n := range nums {
 		heap.Push(h, n)
@@ -96,7 +136,7 @@ func ExampleHeap() {
 
 func BenchmarkHeap(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		h := &Heap{}
+		h := NewHeap(minHeapLessFn)
 		heap.Init(h)
 		for _, n := range []int{2, 1, 3} {
 			heap.Push(h, n)
