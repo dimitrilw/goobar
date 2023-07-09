@@ -3,7 +3,6 @@ package mstkruskal
 // cSpell:ignore costi
 
 import (
-	// "fmt"
 	"testing"
 
 	"gotest.tools/v3/assert"
