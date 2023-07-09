@@ -12,6 +12,7 @@
         // repo-related words
             "goobar", // this repo
             "alphatrie",
+            "bridgefindtarjan",
             "disjointset",
             "gridpos",
             "heapgeneric",
@@ -46,6 +47,7 @@
             "Kruskal", // as in Kruskal's algorithm for Minimum Spanning Tree
             "opensource",
             "predeclared",
+            "Tarjan", // as in Tarjan's algorithm for finding bridges in a graph
     ],
     // go plugin
     "go.testOnSave": true,
