@@ -108,9 +108,7 @@ func tcRun[C constraints.Ordered](t *testing.T, tc testCase[C]) {
 		defer teardown(t)
 
 		gotSlice := h.Slice()
-		sort.Slice(gotSlice, func(i, j int) bool { return gotSlice[i] < gotSlice[j] })
 		want := tc.start
-		sort.Slice(want, func(i, j int) bool { return gotSlice[i] < gotSlice[j] })
 		assert.DeepEqual(t, gotSlice, want)
 	})
 }

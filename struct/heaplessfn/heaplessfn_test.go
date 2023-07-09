@@ -106,14 +106,10 @@ func TestHeap(t *testing.T) {
 
 		want := make([]int, len(START_INTS))
 		copy(want, START_INTS[:])
-		sort.Slice(want, func(i, j int) bool { return want[i] < want[j] })
 
 		got := h.Slice()
-		sort.Slice(got, func(i, j int) bool { return got[i] < got[j] })
 
-		for i := range want {
-			assert.Equal(t, got[i], want[i])
-		}
+		assert.DeepEqual(t, got, want)
 	})
 }
 
