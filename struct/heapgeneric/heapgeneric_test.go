@@ -1,4 +1,4 @@
-package heaptype
+package heapgeneric
 
 import (
 	"container/heap"
