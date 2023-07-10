@@ -1,5 +1,9 @@
 package heapsimple
 
+// import (
+// 	"container/heap"
+// )
+
 type Heap []int
 
 func (h Heap) Len() int { return len(h) }

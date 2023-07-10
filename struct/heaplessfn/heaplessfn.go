@@ -1,5 +1,9 @@
 package heaplessfn
 
+// import (
+// 	"container/heap"
+// )
+
 type heapLessFn func(int, int) bool
 
 // func minHeapLessFn(a, b int) bool { return a < b }
