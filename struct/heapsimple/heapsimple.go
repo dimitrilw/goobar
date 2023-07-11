@@ -13,10 +13,10 @@ func (h Heap) Less(i, j int) bool {
 	return h[i] < h[j]
 }
 func (h Heap) Swap(i, j int) { h[i], h[j] = h[j], h[i] }
-func (h *Heap) Push(x any)   { *h = append(*h, x.(int)) }
-func (h *Heap) Pop() (item any) {
+func (h *Heap) Push(a any)   { *h = append(*h, a.(int)) }
+func (h *Heap) Pop() (res any) {
 	i := len(*h) - 1
-	item, *h = (*h)[i], (*h)[:i]
+	res, *h = (*h)[i], (*h)[:i]
 	return
 }
 func (h Heap) Peek() int { return h[0] }
