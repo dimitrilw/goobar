@@ -14,6 +14,7 @@
             "alphatrie",
             "bridgefindtarjan",
             "disjointset",
+            "flatten2darray",
             "gridpos",
             "heapgeneric",
             "heaplessfn",
@@ -45,6 +46,7 @@
         // misc other
             "fubar",
             "Kruskal", // as in Kruskal's algorithm for Minimum Spanning Tree
+            "leetcode",
             "opensource",
             "predeclared",
             "Tarjan", // as in Tarjan's algorithm for finding bridges in a graph
